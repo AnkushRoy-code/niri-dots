@@ -1,0 +1,10 @@
+All of these are Arch Packages:
+
+niri
+foot 
+wl-clipboard
+wl-clip-persist
+swaybg
+fuzzel
+swaylock
+brightnessctl
