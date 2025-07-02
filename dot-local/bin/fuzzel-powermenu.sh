@@ -1,7 +1,11 @@
 #!/bin/bash
 # https://github.com/thnikk/fuzzel-scripts/blob/master/fuzzel-powermenu.sh
 
-SELECTION="$(printf " Lock\n Suspend\n Log out\n Reboot\n Shutdown" | fuzzel --dmenu -l 5 -p "Power Menu: ")"
+export XDG_RUNTIME_DIR=/run/user/1000
+export WAYLAND_DISPLAY=wayland-1
+export PATH=$PATH:/usr/bin
+
+SELECTION="$(printf " Lock\n Suspend\n Log out\n Reboot\n Shutdown" | /usr/bin/fuzzel --dmenu -l 5 -p "Power Menu: ")"
 
 case $SELECTION in
 	*"Lock")

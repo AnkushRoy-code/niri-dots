@@ -27,8 +27,8 @@
         "pulseaudio",
         "network",
         "backlight",
-        "tray",
-        "custom/power"
+        "tray"
+        // "custom/power" // doesn't work when here idfk why
     ],
 
     "custom/hamburger": {
