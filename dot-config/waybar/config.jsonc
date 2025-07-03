@@ -23,6 +23,7 @@
         "clock"
     ],
     "modules-right": [
+        "custom/mpd_play",
         "mpd",
         "pulseaudio",
         "network",
@@ -31,17 +32,12 @@
         // "custom/power" // doesn't work when here idfk why
     ],
 
+    // Left
     "custom/hamburger": {
         "format": "",
         "on-click": "fuzzel"
     },
 
-    "custom/power": {
-        "format": "",
-        "on-click": "~/.local/bin/fuzzel-powermenu.sh"
-    },
-
-    // Modules configuration
     "niri/workspaces": {
         "format": "{icon}",
         "format-icons": {
@@ -49,11 +45,48 @@
             "default": ""
         }
     },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": "{used}GiB "
+    },
+
     "disk": {
         "format": "{free} "
     },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    // Center
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": " {:%I:%m %p}",
+        "format-alt": "󰸘 {:%a %b %d %H:%M:%S %Y}",
+        // "format-alt": "{:%Ec}", // weird spacing
+        "interval": 1
+    },
+
+    // Right
     "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon} - {title}  ",
+        "format": "{title}  ",
         "format-disconnected": "Disconnected ",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
         "unknown-tag": "N/A",
@@ -79,68 +112,7 @@
         "tooltip-format": "MPD (connected)",
         "tooltip-format-disconnected": "MPD (disconnected)"
     },
-    "tray": {
-        // "icon-size": 21,
-        "spacing": 10,
-        // "icons": {
-        //   "blueman": "bluetooth",
-        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
-        // }
-    },
-    "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": " {:%I:%m %p}",
-        "format-alt": "󰸘 {:%a %b %d %H:%M:%S %Y}",
-        // "format-alt": "{:%Ec}", // weird spacing
-        "interval": 1
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{used}GiB "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
-    },
-    "backlight": {
-        // "device": "acpi_video1",
-        "scroll-step": 1, // %, can be a float
-        "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "on-scroll-up": "~/.local/bin/backlight_no_notification.sh up",
-        "on-scroll-down": "~/.local/bin/backlight_no_notification.sh down"
-    },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
+    
     "pulseaudio": {
         "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon}",
@@ -159,6 +131,52 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+    
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "backlight": {
+        // "device": "acpi_video1",
+        "scroll-step": 1, // %, can be a float
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "on-scroll-up": "~/.local/bin/backlight_no_notification.sh up",
+        "on-scroll-down": "~/.local/bin/backlight_no_notification.sh down"
+    },
+
+    "custom/power": {
+        "format": "",
+        "on-click": "~/.local/bin/fuzzel-powermenu.sh"
+    },
+
+    "custom/mpd_play": {
+
+    },
+
+    // Modules configuration
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10,
+        // "icons": {
+        //   "blueman": "bluetooth",
+        //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
+        // }
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
     },
     "custom/media": {
         "format": "{icon} {text}",
