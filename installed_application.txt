@@ -8,3 +8,11 @@ swaybg
 fuzzel
 swaylock
 brightnessctl
+
+These are stuff you need in your system idk how you will get these but you need
+these. Google ig it's not that hard
+Poppins
+Maple Nerd Font
+JetBrainsMono NF
+Papirus
+Iosevka

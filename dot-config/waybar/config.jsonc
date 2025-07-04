@@ -4,7 +4,7 @@
     // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 20, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
+    "spacing": 0,
     // Choose the order of the modules
 
     "margin": 0,
@@ -23,13 +23,15 @@
         "clock"
     ],
     "modules-right": [
-        "custom/mpd_play",
+        "custom/mpd_prev",
+        "custom/mpd_ctl",
+        "custom/mpd_next",
         "mpd",
         "pulseaudio",
         "network",
         "backlight",
-        "tray"
-        // "custom/power" // doesn't work when here idfk why
+        "tray",
+        "custom/power" // doesn't work when here idfk why
     ],
 
     // Left
@@ -85,12 +87,28 @@
     },
 
     // Right
+    "custom/mpd_prev": {
+        "format": "",
+        "on-click": "mpc prev"
+    },
+
+    "custom/mpd_ctl": {
+        "exec": "~/.local/bin/waybar/mpd_status.sh",
+        "on-click": "mpc toggle",
+        "restart-interval": 1
+    },
+
+    "custom/mpd_next": {
+        "format": "",
+        "on-click": "mpc next"
+    },
+
     "mpd": {
         "format": "{title}  ",
         "format-disconnected": "Disconnected ",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
         "unknown-tag": "N/A",
-        "interval": 5,
+        "interval": 1,
         "max-length": 25,
         "consume-icons": {
             "on": " "
@@ -144,7 +162,7 @@
     },
 
     "backlight": {
-        // "device": "acpi_video1",
+        "device": "acpi_video0",
         "scroll-step": 1, // %, can be a float
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""],
@@ -152,16 +170,6 @@
         "on-scroll-down": "~/.local/bin/backlight_no_notification.sh down"
     },
 
-    "custom/power": {
-        "format": "",
-        "on-click": "~/.local/bin/fuzzel-powermenu.sh"
-    },
-
-    "custom/mpd_play": {
-
-    },
-
-    // Modules configuration
     "tray": {
         // "icon-size": 21,
         "spacing": 10,
@@ -170,36 +178,9 @@
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
         // }
     },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
-    },
-    "custom/media": {
-        "format": "{icon} {text}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-    },
+
     "custom/power": {
-        "format" : "⏻ ",
-		"tooltip": false,
-		"menu": "on-click",
-		"menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-		"menu-actions": {
-			"shutdown": "shutdown",
-			"reboot": "reboot",
-			"suspend": "systemctl suspend",
-			"hibernate": "systemctl hibernate"
-		}
+        "format": "",
+        "on-click": "~/.local/bin/fuzzel-powermenu.sh"
     }
 }
