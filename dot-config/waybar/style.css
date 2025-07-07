@@ -130,7 +130,7 @@ button:hover {
 #custom-mpd_ctl,
 #custom-mpd_next {
     border-radius: 0;
-    background-color: alpha(@green, 0.9);
+    background-color: @green;
     padding-right: 4px;
     padding-left: 6px;
     margin: 0;

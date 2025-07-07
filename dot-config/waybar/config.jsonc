@@ -67,9 +67,9 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        "format": "{capacity}% {icon} ",
+        "format-full": "{capacity}% {icon} ",
+        "format-charging": "{capacity}%  ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
@@ -77,10 +77,16 @@
         "format-icons": ["", "", "", "", ""]
     },
 
+// hello!
+//
+// This opens up a terminal and closes immediately. I want the terminal to be opened...
+//
+//"on-click": "foot -e upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+
     // Center
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": " {:%I:%m %p}",
+        "format": " {:%I:%M %p}",
         "format-alt": "󰸘 {:%a %b %d %H:%M:%S %Y}",
         // "format-alt": "{:%Ec}", // weird spacing
         "interval": 1
@@ -104,12 +110,13 @@
     },
 
     "mpd": {
-        "format": "{title}  ",
+        "format": "{title}",
         "format-disconnected": "Disconnected ",
         "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
         "unknown-tag": "N/A",
         "interval": 1,
         "max-length": 25,
+        "min-length": 10,
         "consume-icons": {
             "on": " "
         },
@@ -128,7 +135,8 @@
             "playing": ""
         },
         "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
+        "tooltip-format-disconnected": "MPD (disconnected)",
+        "on-click": "foot -e ncmpcpp"
     },
     
     "pulseaudio": {
@@ -153,12 +161,15 @@
     
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        // "format-wifi": " {bandwidthUpBytes} |  {bandwidthDownBytes} ",
+        "format-wifi": " {bandwidthUpBytes} |  {bandwidthDownBytes}",
         "format-ethernet": "{ipaddr}/{cidr} ",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{essid} | {ifname} ({signalStrength})%",
+        "on-click-right": "foot -e nmtui",
+        "interval": 5
     },
 
     "backlight": {
