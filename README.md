@@ -1,5 +1,8 @@
 # Ankush Roy's Niri Rice!
 
+![WhatsApp Image 2025-07-07 at 10 13 52 PM](https://github.com/user-attachments/assets/4d27c300-57d6-46b4-b6fc-787a4afcd1b7)
+![WhatsApp Image 2025-07-07 at 10 24 31 PM](https://github.com/user-attachments/assets/c9f526ba-d5ff-41be-8211-8f142a8bc3aa)
+
 Welcome to my dotfiles!
 
 Config files are provided for the following applications:
