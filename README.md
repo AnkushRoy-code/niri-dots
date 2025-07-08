@@ -4,12 +4,12 @@ Welcome to my dotfiles!
 
 Config files are provided for the following applications:
 
-- dunst
-- fastfetch
-- foot
-- fuzzel
-- niri (obviously)
-- waybar
+- [dunst](https://github.com/dunst-project/dunst)
+- [fastfetch](https://github.com/fastfetch-cli/fastfetch/)
+- [foot](https://codeberg.org/dnkl/foot)
+- [fuzzel](https://codeberg.org/dnkl/fuzzel)
+- [niri](https://github.com/YaLTeR/niri/) (obviously)
+- [waybar](https://github.com/Alexays/Waybar/)
 
 Scripts are provided for the following actions:
 
